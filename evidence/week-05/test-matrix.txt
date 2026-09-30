@@ -1,0 +1,18 @@
+================================================================================
+TABEL PENGUJIAN (TEST MATRIX) - PRAKTIKUM PERTEMUAN 5
+================================================================================
+
+No. | Test          | Langkah Pengujian                     | Status & Catatan
+--------------------------------------------------------------------------------
+1   | Load form     | Buka registration.php                 | Lulus - Form tampil tanpa error
+2   | Required      | Kirim form kosong                     | Lulus - Browser menahan field wajib
+3   | Email         | Isi email tanpa format (misal: abc)   | Lulus - Browser meminta format email yang benar
+4   | Nama pendek   | Isi nama hanya dua karakter           | Lulus - Atribut minlength mencegah submit
+5   | GET           | Ubah method ke GET lalu submit data   | Lulus - Parameter data terlihat di URL
+6   | POST          | Kembalikan method ke POST dan submit  | Lulus - Query data tidak tampil pada URL
+7   | Radio         | Pilih opsi Mahasiswa / Umum           | Lulus - Nilai muncul dengan benar di ringkasan
+8   | Checkbox      | Pilih dua atau lebih minat tambahan   | Lulus - Dua nilai muncul setelah digabung
+9   | Textarea      | Isi catatan singkat pada textarea     | Lulus - Isi ditampilkan kembali dengan aman
+10  | Hidden        | Submit form secara keseluruhan        | Lulus - Sumber week-05 diterima dengan baik
+11  | Mobile        | Uji tampilan pada ukuran ~360 px      | Lulus - Form berubah jadi satu kolom, tanpa scroll horizontal
+12  | Navigasi      | Klik Beranda -> Katalog -> Daftar     | Lulus - Semua tautan menuju tujuan dengan benar

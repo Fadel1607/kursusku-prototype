@@ -79,7 +79,7 @@ $courses = [
     <style>
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; color: #333; line-height: 1.6; }
         header { background: #0d6efd; color: white; padding: 20px 40px; display: flex; align-items: center; gap: 15px; }
-        nav { background: #0b5ed7; padding: 10px 40px; }
+        nav { background: #0b5ed7; padding: 10px 40px; display: flex; flex-wrap: wrap; gap: 5px; }
         nav a { color: white; margin-right: 20px; text-decoration: none; font-weight: bold; }
         main { padding: 40px; max-width: 1100px; margin: auto; }
         .hero { display: flex; gap: 20px; align-items: center; margin-bottom: 40px; background: #f8f9fa; padding: 20px; border-radius: 8px; }
@@ -110,6 +110,7 @@ $courses = [
         <a href="fee-calculator.php">Kalkulator Biaya</a>
         <a href="server-time.php">Uji Server Time</a>
         <a href="test-functions.php">Uji Fungsi (Unit Test)</a>
+        <a href="registration.php">Daftar Kursus</a> <!-- TOMBOL PERTEMUAN 5 DITAMBAHKAN DI SINI -->
     </nav>
 
     <main>
