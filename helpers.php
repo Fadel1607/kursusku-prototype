@@ -1,53 +1,88 @@
 <?php
+// helpers.php - Kumpulan fungsi bantu (helpers) lengkap (Pertemuan 4 - 6)
+
+// --- FUNGSI DARI PERTEMUAN SEBELUMNYA ---
+
+// Function 1: Format Rupiah
+function rupiah(int $amount): string
+{
+    return 'Rp ' . number_format($amount, 0, ',', '.');
+}
+
+// Function 2: Status Kursus
+function statusKursus(string $status): string
+{
+    if ($status === 'aktif') {
+        return '<span style="color: green; font-weight: bold;">[ Buka ]</span>';
+    } elseif ($status === 'penuh') {
+        return '<span style="color: red; font-weight: bold;">[ Penuh ]</span>';
+    }
+    return '<span style="color: orange; font-weight: bold;">[ Segera ]</span>';
+}
+
+// Function 3: Sisa Kursi
+function sisaKursi(int $quota, int $registered): int
+{
+    return max(0, $quota - $registered);
+}
+
+// Function 4: Format Tanggal
+function formatTanggal(string $date): string
+{
+    $value = new DateTimeImmutable($date);
+    return $value->format('d-m-Y');
+}
+
+
+// --- FUNGSI TAMBAHAN UNTUK PERTEMUAN 6 ---
+
 /**
- * helpers.php - Fungsi Pembantu Reusable
+ * Mengamankan output teks dari serangan XSS
  */
-
-// 1. Format Angka ke Rupiah
-function rupiah($angka) {
-    if (!is_numeric($angka)) {
-        return "Rp 0";
-    }
-    return "Rp " . number_format($angka, 0, ',', '.');
+function e(string $value): string
+{
+    return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
 }
 
-// 2. Format Badge Status Kursus
-function statusKursus($status) {
-    $status = strtolower(trim($status));
-    switch ($status) {
-        case 'aktif':
-        case 'buka':
-            return '<span style="color: green; font-weight: bold;">[ Buka ]</span>';
-        case 'penuh':
-            return '<span style="color: red; font-weight: bold;">[ Penuh ]</span>';
-        case 'segera':
-            return '<span style="color: orange; font-weight: bold;">[ Segera ]</span>';
+/**
+ * Mencari data kursus berdasarkan kodenya
+ */
+function findCourse(array $courses, string $code): ?array
+{
+    foreach ($courses as $course) {
+        if ($course['code'] === $code) {
+            return $course;
+        }
+    }
+    return null;
+}
+
+/**
+ * Menentukan persentase diskon berdasarkan tipe peserta (Percabangan if/elseif)
+ */
+function getDiscountPercent(string $participantType): int
+{
+    if ($participantType === 'mahasiswa') {
+        return 20;
+    } elseif ($participantType === 'guru') {
+        return 15;
+    }
+    return 0; // Untuk umum
+}
+
+/**
+ * Mendapatkan label teks dari kode metode belajar (Percabangan switch)
+ */
+function getLearningModeLabel(string $mode): string
+{
+    switch ($mode) {
+        case 'offline':
+            return 'Tatap Muka (Offline)';
+        case 'online':
+            return 'Online (Daring)';
+        case 'hybrid':
+            return 'Hybrid (Gabungan)';
         default:
-            return '<span style="color: gray;">[ ' . ucfirst($status) . ' ]</span>';
+            return 'Tidak Diketahui';
     }
-}
-
-// 3. Menghitung Sisa Kursi
-function sisaKursi($kapasitas, $terisi) {
-    $sisa = $kapasitas - $terisi;
-    return $sisa > 0 ? $sisa : 0;
-}
-
-// 4. Format Tanggal ke Bahasa Indonesia
-function formatTanggal($tanggalStr) {
-    $timestamp = strtotime($tanggalStr);
-    if (!$timestamp) {
-        return $tanggalStr;
-    }
-
-    $bulanIndo = [
-        1 => 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-    ];
-
-    $hari = date('d', $timestamp);
-    $bulan = $bulanIndo[(int)date('m', $timestamp)];
-    $tahun = date('Y', $timestamp);
-
-    return "$hari $bulan $tahun";
 }
