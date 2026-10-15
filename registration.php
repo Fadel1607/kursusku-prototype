@@ -67,7 +67,8 @@ $siteName = "KursusKu";
     <p class="desc">Silakan isi data diri Anda dengan lengkap untuk mendaftar ke program KursusKu.</p>
 
     <form action="process-registration.php" method="POST">
-        
+            <form action="process-registration.php" method="POST">
+        <input type="hidden" name="source" value="kursusku">
         <div class="form-group">
             <label>Nama Lengkap:</label>
             <input type="text" name="fullname" placeholder="Masukkan nama lengkap..." required>

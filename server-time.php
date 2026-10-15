@@ -1,4 +1,5 @@
 <?php
+$isActive = true;
 // Set timezone ke Waktu Indonesia Barat
 date_default_timezone_set('Asia/Jakarta');
 ?>

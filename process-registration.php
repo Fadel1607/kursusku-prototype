@@ -47,6 +47,7 @@ if (!$selectedCourse) {
 
 // Jika ada error, tampilkan
 if (!empty($errors)) {
+   http_response_code(422);
     ?>
     <!DOCTYPE html>
     <html lang="id">

@@ -20,6 +20,7 @@ runTest("Pengujian rupiah() - Angka Nol", rupiah(0), "Rp 0");
 runTest("Pengujian sisaKursi() - Kursi Tersedia", sisaKursi(20, 15), 5);
 runTest("Pengujian sisaKursi() - Kursi Penuh", sisaKursi(20, 20), 0);
 runTest("Pengujian sisaKursi() - Overbooked", sisaKursi(20, 25), 0);
+runTest("Pengujian sisaKursi() - Sisa 1", sisaKursi(25, 24), 1);
 
 // Test 3: Fungsi statusKursus()
 runTest("Pengujian statusKursus() - Buka", statusKursus('aktif'), '<span style="color: green; font-weight: bold;">[ Buka ]</span>');
